@@ -2,19 +2,18 @@ import re
 
 class NameFinder:
     """
-    Klass inimeste nimede leidmiseks tekstist regulaaravaldiste abil.
+    Klass inimeste nimede leidmiseks pealkirjadest.
     """
 
-    NAME_REGEX = re.compile(
+    REGEX = re.compile(
         r'\b[A-ZÕÄÖÜ][a-zõäöü]+(?:[- ][A-ZÕÄÖÜ][a-zõäöü\.]+){1,3}\b'
     )
 
-    def leia_nimed(self, tekstid: list[str]) -> list[str]:
+    def leia_nimed(self, pealkirjad: list[str]) -> list[str]:
         """
-        Leiab nimed pealkirjadest.
+        Leiab 2–4-osalised inimeste nimed.
         """
         nimed = set()
-        for tekst in tekstid:
-            leitud = self.NAME_REGEX.findall(tekst)
-            nimed.update(leitud)
+        for p in pealkirjad:
+            nimed.update(self.REGEX.findall(p))
         return sorted(nimed)

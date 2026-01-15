@@ -1,23 +1,20 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-
-
 class NewsScraper:
     """
-    Klass uudisteportaali HTML-i allalaadimiseks ja pealkirjade leidmiseks.
+    Klass HTML-i allalaadimiseks ja pealkirjade leidmiseks.
     """
 
     def __init__(self, url: str):
         """
-        Initsialiseerib objekti portaali URL-iga.
+        Salvestab portaali URL-i.
         """
         self.url = url
 
     def lae_html(self) -> str:
         """
-        Laeb veebilehe HTML-i ja tagastab selle tekstina.
+        Laeb veebilehe HTML-i.
         """
         vastus = requests.get(self.url, timeout=10)
         vastus.raise_for_status()

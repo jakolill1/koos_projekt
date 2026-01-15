@@ -12,12 +12,12 @@ PORTAALID = {
 
 class NewsGUI:
     """
-    Graafiline kasutajaliides portaali valikuks ja analüüsiks.
+    Graafiline kasutajaliides portaali valimiseks ja analüüsiks.
     """
 
     def __init__(self):
         """
-        Loob GUI akna.
+        Loob GUI akna ja komponendid.
         """
         self.aken = tk.Tk()
         self.aken.title("Uudiste nimede otsing")
