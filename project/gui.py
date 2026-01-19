@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from scraper import NewsScraper
 from name_finder import NameFinder
-from json_writer import JsonWriter
+from json_output.json_writer import JsonWriter
 
 PORTAALID = {
     "Delfi": "https://www.delfi.ee",
@@ -50,8 +50,12 @@ class NewsGUI:
         nimed = finder.leia_nimed(pealkirjad)
 
         writer = JsonWriter()
-        failinimi = f"{portaal.lower()}.json"
-        writer.kirjuta_faili(failinimi, nimed)
+        failinimi = f"{portaal.lower()}.json_output"
+        writer.write(failinimi, nimed)
+
+        scraper = NewsScraper("https://www.delfi.ee")
+        pealkirjad = scraper.scrape_delfi()
+        print(pealkirjad)  # nüüd näeb tegelikke pealkirju
 
     def kaivita_gui(self):
         """
